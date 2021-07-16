@@ -1,21 +1,11 @@
-const history = require('connect-history-api-fallback')
-const express = require('express')
-const { dirname } = require('path')
-const path = require('path')
+var express = require('express')
+var path = require('path')
+var serveStatic = require('serve-static')
 
-const app = express()
-const staticFileMiddleware = express.static(path.join(dirname, 'dist'))
+var app = express()
 
-app.use(history())
-app.use(staticFileMiddleware)
+app.use(serveStatic(path.join(__dirname, 'dist')))
 
-app.get('/', function(req, res) {
-
-    res.render(path.join(dirname + '/index.html'))
-
-})
-
-var port = process.env.PORT || 9090
-app.listen(port, function() {
-    console.log('Express serving on 9090')
-})
+var port = process.env.PORT || 5000
+app.listen(port)
+console.log('serve started ' + port)
