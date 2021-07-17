@@ -1,11 +1,13 @@
 <template>
-    <div>
-        <input type="text" size="50"/><br/><br />
-        <button id="cd">Cadastrar</button><br /><br />
-        <button id="pq">Pesquisar</button><br /><br />
-        <table>
-
-        </table>
+    <div id="principal">
+        <div id="form">
+            <label>Nome do cliente</label><br />
+            <input type="text" size="50"/><br/><br />
+            <button id="cd">Cadastrar</button>
+            <button id="pq">Pesquisar</button><br /><br />
+            <table>         
+            </table>
+        </div>       
     </div>
 </template>/
 
@@ -101,16 +103,30 @@ export default {
       background-color: aqua;
   } 
   input{
-      font-size: 30px;
-      width: 400px;
+      font-size: 20px;
+      width: 260px;
   } 
   button{
-      font-size: 30px;
+      font-size: 20px;
   }
   td{
       font-size: 20px;
       color: blue;  
       border-bottom: 1px solid;    
+  }
+  #principal{
+      border: 3px solid;
+      border-radius: 15px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 300px;      
+  }
+  #form{
+      margin: 15px 15px 15px 15px ;
+  }
+  #pq{
+      position: relative;
+      left: 10px;
   }
 
 </style>
