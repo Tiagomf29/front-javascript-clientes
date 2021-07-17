@@ -27,6 +27,7 @@ export default {
                     texto.focus();
                 }else{
                   this.inserirCliente(); 
+                  this.listar();
                   alert("Registro inserido com sucesso!"); 
                 }
             })
@@ -63,7 +64,7 @@ export default {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json' 
                 },                
-                url: "http://localhost:8080/api/inserir",
+                url: "https://aapi-cadastro-cliente.herokuapp.com/api/inserir",
                 type: "POST",
                 data:JSON.stringify({
                     "nome": nomeCliente
