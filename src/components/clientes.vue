@@ -3,10 +3,18 @@
         <div id="form">
             <label>Nome do cliente</label><br />
             <input type="text" size="50"/><br/><br />
-            <button id="cd">Cadastrar</button>
-            <button id="pq">Pesquisar</button><br /><br />
-            <table>         
-            </table>
+            <button id="cd">Cadastrar</button><br /><br />           
+            <fieldset>
+                <legend>Pesquisar por nome</legend>
+                <input type="text" size="50" />
+                <br /><br />
+                <button id="pq">Pesquisar</button>
+            </fieldset>
+            <br />
+            <div id="divTab">
+                <table>         
+                </table>
+            </div>
         </div>       
     </div>
 </template>/
@@ -17,9 +25,10 @@ export default {
     
     mounted() {
         this.acaoBotao();
+        this.botaoPesquisa();
     },
     methods: {
-        acaoBotao:function () {
+        acaoBotao:function () {            
             let botao = document.getElementById("cd");
             botao.addEventListener('click', e =>{
                 e.pageX;
@@ -58,8 +67,7 @@ export default {
             });
                
         },
-        inserirCliente:function(){
-
+        inserirCliente:function(){           
             let nomeCliente = document.querySelector("input").value;            
             $.ajax({
                 headers: { 
@@ -86,12 +94,11 @@ export default {
 
         },
         botaoPesquisa:function(){
-
-
-          
-
-           
-
+          let botao = document.getElementById("pq");
+          botao.addEventListener('click', e=>{
+                console.log(e);
+                this.listar();
+          });           
         }
         
     },
@@ -104,10 +111,10 @@ export default {
   } 
   input{
       font-size: 20px;
-      width: 260px;
+      width: 240px;
   } 
   button{
-      font-size: 20px;
+      font-size: 15px;
   }
   td{
       font-size: 20px;
@@ -129,4 +136,16 @@ export default {
       left: 10px;
   }
 
+  fieldset{
+     width: 200px; 
+  }
+
+  table{
+    border: 1px dashed; 
+    text-align: center;       
+  }
+  #divTab{
+    margin: auto auto auto auto; 
+    width: 200px;
+  }
 </style>
