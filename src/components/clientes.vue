@@ -1,7 +1,8 @@
 <template>
     <div>
         <input type="text" size="50"/><br/><br />
-        <button>Cadastrar</button><br /><br />
+        <button id="cd">Cadastrar</button><br /><br />
+        <button id="pq">Pesquisar</button><br /><br />
         <table>
 
         </table>
@@ -17,7 +18,7 @@ export default {
     },
     methods: {
         acaoBotao:function () {
-            let botao = document.querySelector("button");
+            let botao = document.getElementById("cd");
             botao.addEventListener('click', e =>{
                 e.pageX;
                 let texto = document.querySelector("input");
@@ -25,7 +26,8 @@ export default {
                     alert("Informe um nome de cliente!");
                     texto.focus();
                 }else{
-                  this.listar();
+                  this.inserirCliente(); 
+                  alert("Registro inserido com sucesso!"); 
                 }
             })
         },
@@ -52,6 +54,41 @@ export default {
 
             });
                
+        },
+        inserirCliente:function(){
+
+            let nomeCliente = document.querySelector("input").value;            
+            $.ajax({
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json' 
+                },                
+                url: "http://localhost:8080/api/inserir",
+                type: "POST",
+                data:JSON.stringify({
+                    "nome": nomeCliente
+                }),
+                beforeSend : function(){
+                     
+                }
+
+            })
+            .done(function(msg){
+                console.log(msg)
+
+            })
+            .fail(function(jqXHR, textStatus, msg){
+                 console.log(msg+''+textStatus);
+            });
+
+        },
+        botaoPesquisa:function(){
+
+
+          
+
+           
+
         }
         
     },
