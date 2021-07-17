@@ -8,7 +8,7 @@
         <hr>   
         <div id="pesquisa">         
             <legend>Pesquisar por nome</legend>
-            <input type="text" size="50" />
+            <input id="edtPesq" type="text" size="50" />
             <br /><br />
             <button id="pq">Pesquisar</button>         
         </div>
@@ -38,8 +38,7 @@ export default {
                     alert("Informe um nome de cliente!");
                     texto.focus();
                 }else{
-                  this.inserirCliente(); 
-                  this.listar();
+                  this.inserirCliente();                   
                   alert("Registro inserido com sucesso!"); 
                 }
             })
@@ -49,6 +48,32 @@ export default {
             $.ajax({
 
                 url: "https://aapi-cadastro-cliente.herokuapp.com/api/listar",
+                type: "GET",
+                success:function(response){
+                  
+                  response.forEach((element,vlr) =>{
+                    let linha = document.createElement("tr");
+                      console.log(element);
+                      linha.innerHTML = `
+                           
+                        <td>${response[vlr].nome}</td>
+                           
+                      `
+                      document.querySelector("table").appendChild(linha);
+                  });
+                 
+                }
+
+            });
+               
+        },
+        listarPorNome:function(){
+            $("table").empty();
+            let pesquisaNome = document.getElementById("edtPesq").value;
+            pesquisaNome ="https://aapi-cadastro-cliente.herokuapp.com/api/listarPorNome/"+pesquisaNome;
+            $.ajax({
+
+                url: pesquisaNome,
                 type: "GET",
                 success:function(response){
                   
@@ -98,7 +123,7 @@ export default {
           let botao = document.getElementById("pq");
           botao.addEventListener('click', e=>{
                 console.log(e);
-                this.listar();
+                this.listarPorNome();
           });           
         }
         
@@ -132,6 +157,7 @@ export default {
   }
   #form, #pesquisa{
       margin: 15px 15px 15px 15px ;
+      text-align: center;
   }
 
   #pq{
