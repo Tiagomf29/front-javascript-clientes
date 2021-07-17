@@ -3,21 +3,22 @@
         <div id="form">
             <label>Nome do cliente</label><br />
             <input type="text" size="50"/><br/><br />
-            <button id="cd">Cadastrar</button><br /><br />           
-            <fieldset>
-                <legend>Pesquisar por nome</legend>
-                <input type="text" size="50" />
-                <br /><br />
-                <button id="pq">Pesquisar</button>
-            </fieldset>
-            <br />
-            <div id="divTab">
-                <table>         
-                </table>
-            </div>
-        </div>       
+            <button id="cd">Cadastrar</button>
+        </div> 
+        <hr>   
+        <div id="pesquisa">         
+            <legend>Pesquisar por nome</legend>
+            <input type="text" size="50" />
+            <br /><br />
+            <button id="pq">Pesquisar</button>         
+        </div>
+        <hr>  
+        <div id="divTab">
+            <table>         
+            </table>
+        </div>             
     </div>
-</template>/
+</template>
 
 <script>
 import $ from "jquery";
@@ -126,14 +127,16 @@ export default {
       border-radius: 15px;
       margin-left: auto;
       margin-right: auto;
-      width: 300px;      
+      width: 300px;
+      background-color: #d1e0eb;      
   }
-  #form{
+  #form, #pesquisa{
       margin: 15px 15px 15px 15px ;
   }
+
   #pq{
       position: relative;
-      left: 10px;
+      
   }
 
   fieldset{
@@ -141,11 +144,16 @@ export default {
   }
 
   table{
-    border: 1px dashed; 
+    border: 1px ridge; 
     text-align: center;       
   }
   #divTab{
     margin: auto auto auto auto; 
     width: 200px;
+  }
+
+  hr{
+    width: 200px;
+    border: 2px dotted;
   }
 </style>
