@@ -14,6 +14,7 @@
         </div>
         <hr>  
         <div id="divTab">
+            <strong></strong>
             <table>         
             </table>
         </div>             
@@ -75,6 +76,10 @@ export default {
 
                 url: pesquisaNome,
                 type: "GET",
+                
+                beforeSend : function(){
+                    document.querySelector("strong").innerHTML = "Buscando dados no servidor de banco de dados AWS. Aguarde!" 
+                },
                 success:function(response){
                   
                   response.forEach((element,vlr) =>{
@@ -90,7 +95,11 @@ export default {
                  
                 }
 
-            });
+            }).done(function(msg){
+                console.log(msg)
+                document.querySelector("strong").innerHTML ="";
+
+            })
                
         },
         inserirCliente:function(){           
