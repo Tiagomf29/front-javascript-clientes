@@ -40,8 +40,7 @@ export default {
                     swal.fire("Informe um nome de cliente!");
                     texto.focus();
                 }else{
-                  this.inserirCliente();                   
-                  swal.fire('Registrado', 'Cadastro realizado com sucesso!','success'); 
+                  this.inserirCliente();                                     
                 }
             })
         },
@@ -110,7 +109,10 @@ export default {
             });
                
         },
-        inserirCliente:function(){           
+        inserirCliente:function(){               
+            $("table").empty();            
+            let texto =  document.querySelector("strong");                
+            texto.style.color= "black";                      
             let nomeCliente = document.querySelector("input").value;            
             $.ajax({
                 headers: { 
@@ -123,18 +125,34 @@ export default {
                     "nome": nomeCliente
                 }),
                 beforeSend : function(){
-                     
+                     document.querySelector("strong").innerHTML = "Realizando comunicação com o servidor de banco de dados AWS. Aguarde!" 
+                },
+                success:function(response){
+                    console.log(response);
+                    let edtNomeCliente = document.querySelector("input");
+                    edtNomeCliente.innerHTML = "";
+                    if (response != undefined){
+                        swal.fire('Registrado', 'Cadastro realizado com sucesso!','success'); 
+                    }else{
+                       swal.fire({
+                                    icon: 'error',
+                                    title: 'Não Registrado!',
+                                    text: 'Nome do cliente já foi cadastrado. Verifique!'
+                                })
+                    }
                 }
 
             })
             .done(function(msg){
                 console.log(msg)
-
+                document.querySelector("strong").innerHTML ="";                                
             })
             .fail(function(jqXHR, textStatus, msg){
-                 console.log(msg+''+textStatus);
+                console.log(msg);
+                let texto =  document.querySelector("strong");
+                texto.innerHTML = "Problema na comunicação com o banco de dados da AWS. Serviço pode estar parado!";
+                texto.style.color= "red";                
             });
-
         },
         botaoPesquisa:function(){
           let botao = document.getElementById("pq");
