@@ -1,15 +1,14 @@
 <template>
-    <div id="principal">
-        <div id="form">
-            <label>Nome do cliente</label><br />
-            <input type="text" maxlength="20" size="20"/><br/><br />
+    <div id="principal">        
+        <div id="form"> 
+            <h3>Aplicativo de cadastro de nomes de clientes</h3>      
+            <input type="text" maxlength="20" size="20" placeholder="Informe o nome do cliente"/><br/>
             <button id="cd" class="ccd">Cadastrar</button>
         </div> 
         <hr> 
         <div id="pesquisa">         
-            <legend>Pesquisar por nome</legend>
-            <input id="edtPesq" type="text" size="50" />
-            <br /><br />
+            <input id="edtPesq" type="text" size="50" placeholder="Pesquise por nome do cliente"/>
+            <br />
             <button id="pq" class="cpq">Pesquisar</button>         
         </div>
         <hr>  
@@ -186,7 +185,7 @@ export default {
       background-color: aqua;
   } 
   input{
-      font-size: 20px;
+      font-size: 15px;
       width: 240px;
   } 
   button{
@@ -202,7 +201,7 @@ export default {
       border-radius: 15px;
       margin-left: auto;
       margin-right: auto;
-      width: 300px;
+      width: 360px;
       background-color: #d1e0eb;      
   }
   #form, #pesquisa{
@@ -293,5 +292,21 @@ export default {
   transition: 0s
 }
 
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+h3{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+}
 
 </style>
