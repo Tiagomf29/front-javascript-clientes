@@ -94,6 +94,14 @@ export default {
                       `
                       document.querySelector("table").appendChild(linha);
                   });
+
+                  if (response.length == 0){
+                      swal.fire({
+                                    icon: 'info',
+                                    title: 'Não localizado!',
+                                    text: 'Não foi localizado nome de clientes conforme a pesquisa realizada. Verifique!'
+                                })                     
+                  }
                  
                 }
 
