@@ -131,8 +131,15 @@ export default {
         botaoPesquisa:function(){
           let botao = document.getElementById("pq");
           botao.addEventListener('click', e=>{
-                console.log(e);
-                this.listarPorNome();
+                console.log(e); 
+              $("table").empty();
+              let texto = document.getElementById("edtPesq");
+                if (texto.value == '') {                   
+                    alert("Informe um valor para a pesquisa!");
+                    texto.focus();
+                }else{
+                   this.listarPorNome();
+                }
           });           
         }
         
