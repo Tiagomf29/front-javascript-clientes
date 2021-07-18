@@ -2,7 +2,7 @@
     <div id="principal">
         <div id="form">
             <label>Nome do cliente</label><br />
-            <input type="text" size="50"/><br/><br />
+            <input type="text" maxlength="20"/><br/><br />
             <button id="cd">Cadastrar</button>
         </div> 
         <hr>   
