@@ -70,7 +70,9 @@ export default {
                
         },
         listarPorNome:function(){
-            $("table").empty();
+            $("table").empty();            
+            let texto =  document.querySelector("strong");                
+            texto.style.color= "black";
             let pesquisaNome = document.getElementById("edtPesq").value;
             pesquisaNome ="https://aapi-cadastro-cliente.herokuapp.com/api/listarPorNome/"+pesquisaNome;
             $.ajax({
@@ -100,7 +102,12 @@ export default {
                 console.log(msg)
                 document.querySelector("strong").innerHTML ="";
 
-            })
+            }).fail(function(jqXHR, textStatus, msg){
+                console.log(msg);
+                let texto =  document.querySelector("strong");
+                texto.innerHTML = "Problema na tentativa de recuperação de dados no serviço da AWS. Serviço pode estar parado!";
+                texto.style.color= "red";
+            });
                
         },
         inserirCliente:function(){           
