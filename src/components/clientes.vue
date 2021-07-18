@@ -83,7 +83,13 @@ export default {
                     document.querySelector("strong").innerHTML = "Buscando dados no servidor de banco de dados AWS. Aguarde!" 
                 },
                 success:function(response){
-                  
+                   if (response.length == 0){
+                      swal.fire({
+                                    icon: 'info',
+                                    title: 'Não localizado!',
+                                    text: 'Não foi localizado nome de clientes conforme a pesquisa realizada. Verifique!'
+                                })                     
+                  }else{
                   response.forEach((element,vlr) =>{
                     let linha = document.createElement("tr");
                       console.log(element);
@@ -95,12 +101,6 @@ export default {
                       document.querySelector("table").appendChild(linha);
                   });
 
-                  if (response.length == 0){
-                      swal.fire({
-                                    icon: 'info',
-                                    title: 'Não localizado!',
-                                    text: 'Não foi localizado nome de clientes conforme a pesquisa realizada. Verifique!'
-                                })                     
                   }
                  
                 }
@@ -136,10 +136,10 @@ export default {
                      document.querySelector("strong").innerHTML = "Realizando comunicação com o servidor de banco de dados AWS. Aguarde!" 
                 },
                 success:function(response){
-                    console.log(response);
-                    let edtNomeCliente = document.querySelector("input");
-                    edtNomeCliente.innerHTML = "";
+                    console.log(response);                    
                     if (response != undefined){
+                        let edtNomeCliente = document.querySelector("input");
+                        edtNomeCliente.value = "";
                         swal.fire('Registrado', 'Cadastro realizado com sucesso!','success'); 
                     }else{
                        swal.fire({
