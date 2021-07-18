@@ -3,14 +3,14 @@
         <div id="form">
             <label>Nome do cliente</label><br />
             <input type="text" maxlength="20" size="20"/><br/><br />
-            <button id="cd">Cadastrar</button>
+            <button id="cd" class="ccd">Cadastrar</button>
         </div> 
-        <hr>   
+        <hr> 
         <div id="pesquisa">         
             <legend>Pesquisar por nome</legend>
             <input id="edtPesq" type="text" size="50" />
             <br /><br />
-            <button id="pq">Pesquisar</button>         
+            <button id="pq" class="cpq">Pesquisar</button>         
         </div>
         <hr>  
         <div id="divTab">
@@ -232,4 +232,66 @@ export default {
     width: 200px;
     border: 2px dotted;
   }
+
+.cpq {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: #d1e0eb;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.cpq:hover {background-color: honeydew}
+
+.cpq:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+.ccd {
+  position: relative;
+  background-color:#d1e0eb;
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 22px;
+  color: black;
+  padding: 20px;
+  width: 150px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.ccd:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.ccd:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+
 </style>
