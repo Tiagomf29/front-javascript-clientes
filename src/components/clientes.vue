@@ -23,6 +23,7 @@
 
 <script>
 import $ from "jquery";
+import swal from 'sweetalert2';
 export default {
     
     mounted() {
@@ -32,15 +33,15 @@ export default {
     methods: {
         acaoBotao:function () {            
             let botao = document.getElementById("cd");
-            botao.addEventListener('click', e =>{
+            botao.addEventListener('click', e =>{               
                 e.pageX;
                 let texto = document.querySelector("input");
                 if (texto.value == '') {
-                    alert("Informe um nome de cliente!");
+                    swal.fire("Informe um nome de cliente!");
                     texto.focus();
                 }else{
                   this.inserirCliente();                   
-                  alert("Registro inserido com sucesso!"); 
+                  swal.fire('Registrado', 'Cadastro realizado com sucesso!','success'); 
                 }
             })
         },
@@ -132,10 +133,10 @@ export default {
           let botao = document.getElementById("pq");
           botao.addEventListener('click', e=>{
                 console.log(e); 
-              $("table").empty();
+            $("table").empty();
               let texto = document.getElementById("edtPesq");
                 if (texto.value == '') {                   
-                    alert("Informe um valor para a pesquisa!");
+                    swal.fire("Informe um valor para a pesquisa!");
                     texto.focus();
                 }else{
                    this.listarPorNome();
