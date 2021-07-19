@@ -39,7 +39,7 @@ export default {
                 let texto = document.querySelector("input");
                 if (texto.value == '') {
                     swal.fire("Informe um nome de cliente!");
-                    texto.focus();
+                                                         
                 }else{
                   this.inserirCliente();                                     
                 }
@@ -96,7 +96,7 @@ export default {
                       console.log(element);
                       linha.innerHTML = `
                            
-                        <td><input class="marca" type="checkbox" /></td><td>${response[vlr].id}</td><td>${response[vlr].nome}</td>
+                        <td><input class="marca" type="checkbox" /></td><td id="tdIdCliente">${response[vlr].id}</td><td>${response[vlr].nome}</td>
                            
                       `
                       document.querySelector("table").appendChild(linha);
@@ -171,7 +171,6 @@ export default {
               let texto = document.getElementById("edtPesq");
                 if (texto.value == '') {                   
                     swal.fire("Informe um valor para a pesquisa!");
-                    texto.focus();
                 }else{
                    this.listarPorNome();
                 }
@@ -293,7 +292,7 @@ tr{
       border-radius: 15px;
       margin-left: auto;
       margin-right: auto;
-      width: 360px;
+      width: 340px;
       background-color: #d1e0eb;      
   }
   #form, #pesquisa{
@@ -424,5 +423,9 @@ h3{
 }
 
 #excluir:hover {opacity: 1}
+
+#tdIdCliente{
+    visibility: visible;
+}
 
 </style>
