@@ -196,7 +196,7 @@ export default {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json' 
                             },                
-                            url: "http://localhost:8080/api/excluir",
+                            url: "https://aapi-cadastro-cliente.herokuapp.com/api/excluir",
                             type: "DELETE",
                             data:JSON.stringify({
                                 "id": idCliente
