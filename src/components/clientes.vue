@@ -2,7 +2,7 @@
     <div id="principal">        
         <div id="form"> 
             <h3>Aplicativo de cadastro de nomes de clientes</h3>      
-            <input type="text" maxlength="20" size="20" placeholder="Informe o nome do cliente"/><br/>
+            <input type="text" maxlength="40" size="40" placeholder="Informe o nome do cliente"/><br/>
             <button id="cd" class="ccd">Cadastrar</button>
         </div> 
         <hr> 
@@ -74,7 +74,11 @@ export default {
             let texto =  document.querySelector("strong");                
             texto.style.color= "black";
             let pesquisaNome = document.getElementById("edtPesq").value;
-            pesquisaNome ="https://aapi-cadastro-cliente.herokuapp.com/api/listarPorNome/"+pesquisaNome;
+            if(document.getElementById("edtPesq").value !=""){
+                pesquisaNome ="https://aapi-cadastro-cliente.herokuapp.com/api/listarPorNome/"+pesquisaNome;
+            }else{
+                pesquisaNome ="https://aapi-cadastro-cliente.herokuapp.com/api/listar";
+            }
             $.ajax({
 
                 url: pesquisaNome,
@@ -89,7 +93,9 @@ export default {
                                     icon: 'info',
                                     title: 'Não localizado!',
                                     text: 'Não foi localizado nome de clientes conforme a pesquisa realizada. Verifique!'
-                                })                     
+                                }) 
+                       $("#excluir").hide();
+                       $("table").hide();                         
                   }else{
                   response.forEach((element,vlr) =>{
                     let linha = document.createElement("tr");
@@ -101,7 +107,8 @@ export default {
                       `
                       document.querySelector("table").appendChild(linha);
                   });
-
+                    $("#excluir").show(); 
+                    $("table").show(); 
                   }
                  
                 }
@@ -166,14 +173,9 @@ export default {
         botaoPesquisa:function(){
           let botao = document.getElementById("pq");
           botao.addEventListener('click', e=>{
-                console.log(e); 
+            console.log(e); 
             $("table").empty();
-              let texto = document.getElementById("edtPesq");
-                if (texto.value == '') {                   
-                    swal.fire("Informe um valor para a pesquisa!");
-                }else{
-                   this.listarPorNome();
-                }
+            this.listarPorNome();             
           });           
         },
         exluirNomes:function(){
@@ -276,8 +278,10 @@ export default {
   }
   td{
       font-size: 15px;
-      color: blue;  
-      border-bottom: 1px solid;    
+      color: black;  
+      border-bottom: 1px solid; 
+      padding: 10px;
+      border: 1px solid;   
   }
 
 tr{
@@ -310,13 +314,15 @@ tr{
   }
 
   table{
-    border: 1px ridge; 
-    text-align: center;       
+    border: 2px solid; 
+    text-align: center; 
+    margin-left: auto;
+    margin-right: auto;  
   }
   #divTab{
     margin: auto auto auto auto; 
-    width: 200px;
-    text-align: center;
+    width: 330px;
+    text-align: center;    
   }
 
   hr{
@@ -403,8 +409,17 @@ h3{
 
 .marca{
     width: 20px;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;    
 }
-
 
 #excluir{
   background-color: #f4511e;
@@ -422,7 +437,13 @@ h3{
   cursor: pointer;
 }
 
-#excluir:hover {opacity: 1}
+#excluir:hover {
+    opacity: 1
+}
+
+#excluir{
+    display: none;
+}
 
 #tdIdCliente{
     visibility: visible;
