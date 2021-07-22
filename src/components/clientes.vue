@@ -49,7 +49,7 @@ export default {
             $("table").empty();
             $.ajax({
 
-                url: "https://aapi-cadastro-cliente.herokuapp.com/api/listar",
+                url: "http://ec2-3-138-201-240.us-east-2.compute.amazonaws.com:8080/api/listar",
                 type: "GET",
                 success:function(response){
                   
@@ -75,9 +75,9 @@ export default {
             texto.style.color= "black";
             let pesquisaNome = document.getElementById("edtPesq").value;
             if(document.getElementById("edtPesq").value !=""){
-                pesquisaNome ="https://aapi-cadastro-cliente.herokuapp.com/api/listarPorNome/"+pesquisaNome;
+                pesquisaNome ="http://ec2-3-138-201-240.us-east-2.compute.amazonaws.com:8080/api/listarPorNome/"+pesquisaNome;
             }else{
-                pesquisaNome ="https://aapi-cadastro-cliente.herokuapp.com/api/listar";
+                pesquisaNome ="http://ec2-3-138-201-240.us-east-2.compute.amazonaws.com:8080/api/listar";
             }
             $.ajax({
 
@@ -135,7 +135,7 @@ export default {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json' 
                 },                
-                url: "https://aapi-cadastro-cliente.herokuapp.com/api/inserir",
+                url: "http://ec2-3-138-201-240.us-east-2.compute.amazonaws.com:8080/api/inserir",
                 type: "POST",
                 data:JSON.stringify({
                     "nome": nomeCliente
@@ -198,7 +198,7 @@ export default {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json' 
                             },                
-                            url: "https://aapi-cadastro-cliente.herokuapp.com/api/excluir",
+                            url: "http://ec2-3-138-201-240.us-east-2.compute.amazonaws.com:8080/api/excluir",
                             type: "DELETE",
                             data:JSON.stringify({
                                 "id": idCliente
