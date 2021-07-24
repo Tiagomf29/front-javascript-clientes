@@ -87,7 +87,7 @@ export default {
                 beforeSend : function(){
                     document.querySelector("strong").innerHTML = "Buscando dados no servidor de banco de dados AWS. Aguarde!" 
                 },
-                success:function(response){https://endpoint-cadastro-cliente.herokuapp.com/api/
+                success:function(response){
                    if (response.length == 0){
                       swal.fire({
                                     icon: 'info',
