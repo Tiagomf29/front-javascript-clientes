@@ -390,8 +390,6 @@ tr{
   transition: 0s
 }
 
-
-
 input[type=text], select {
   width: 100%;
   padding: 12px 20px;
