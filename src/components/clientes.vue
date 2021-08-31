@@ -49,7 +49,7 @@ export default {
             $("table").empty();
             $.ajax({
 
-                url: "https://ccliente-api.herokuapp.com/api/listar",
+                url: "https://endpoint-cadastro-cliente.herokuapp.com/api/listar",
                 type: "GET",
                 success:function(response){
                   
@@ -75,9 +75,9 @@ export default {
             texto.style.color= "black";
             let pesquisaNome = document.getElementById("edtPesq").value;
             if(document.getElementById("edtPesq").value !=""){
-                pesquisaNome ="https://ccliente-api.herokuapp.com/api/listarPorNome/"+pesquisaNome;
+                pesquisaNome ="https://endpoint-cadastro-cliente.herokuapp.com/api/listarPorNome/"+pesquisaNome;
             }else{
-                pesquisaNome ="https://ccliente-api.herokuapp.com/api/listar";
+                pesquisaNome ="https://endpoint-cadastro-cliente.herokuapp.com/api/listar";
             }
             $.ajax({
 
@@ -135,7 +135,7 @@ export default {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json' 
                 },                
-                url: "https://ccliente-api.herokuapp.com/api/inserir",
+                url: "https://endpoint-cadastro-cliente.herokuapp.com/api/inserir",
                 type: "POST",
                 data:JSON.stringify({
                     "nome": nomeCliente
@@ -198,7 +198,7 @@ export default {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json' 
                             },                
-                            url: "https://ccliente-api.herokuapp.com/api/excluir",
+                            url: "https://endpoint-cadastro-cliente.herokuapp.com/api/excluir",
                             type: "DELETE",
                             data:JSON.stringify({
                                 "id": idCliente
