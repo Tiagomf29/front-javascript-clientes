@@ -446,5 +446,9 @@ h3{
 #tdIdCliente{
     visibility: visible;
 }
+h1{
+    font-weight: bolder;
+    color: red;
+}
 
 </style>
