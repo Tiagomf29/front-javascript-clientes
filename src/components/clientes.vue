@@ -1,7 +1,7 @@
 <template>
     <div id="principal">        
         <div id="form"> 
-            <h3>Aplicativo de cadastro de nomes de clientes</h3>      
+            <h1>Aplicativo de cadastro de nomes de clientes</h1>      
             <input type="text" maxlength="40" size="40" placeholder="Informe o nome do cliente"/><br/>
             <button id="cd" class="ccd">Cadastrar</button>
         </div> 
